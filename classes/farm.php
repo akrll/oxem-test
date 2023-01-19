@@ -4,8 +4,16 @@ class Farm
 {
 
     public $arAnimals = [];
+
+    //Метод регистрации животного на ферме
+    public function registerAnimal(object $animal)
+    {
+        $type = $animal->getAnimalType();
+        $this->arAnimals[$type][] = $animal;
+    }
+
     //Метод получения продуктов для всех типов животных
-    public function getAnimalsProduct($arAnimals, $cDays = 1)
+    public function getAnimalsProduct($cDays = 1)
     {
         $arProduct = [];
 
@@ -13,39 +21,35 @@ class Farm
 
         for($i=0;$i<$cDays;$i++)
         {
-            foreach ($arAnimals as $animal)
+            foreach ($this->arAnimals as $type)
             {
-                $productType = $animal->getProductType();
-                if(is_null($arProduct[$productType]))
+                foreach($type as $animal)
                 {
-                    $arProduct[$productType] = $animal->getProduct();
-                }
-                else
-                {
-                    $arProduct[$productType] += $animal->getProduct();
+                    $productType = $animal->getProductType();
+                    if(is_null($arProduct[$productType]))
+                    {
+                        $arProduct[$productType] = $animal->getProduct();
+                    }
+                    else
+                    {
+                        $arProduct[$productType] += $animal->getProduct();
+                    }
                 }
             }
+                
         }
         return $arProduct;
     }
 
 
     //Метод получения кол-ва всех типов животных
-    public function getCountAnimalsType($arAnimals)
+    public function getCountAnimalsType()
     {
         $arTypes = [];
 
-        foreach ($arAnimals as $animal)
+        foreach ($this->arAnimals as $key=>$type)
         {
-            $animalType = $animal->getAnimalType();
-            if(is_null($arTypes[$animalType]))
-            {
-                $arTypes[$animalType] = 1;
-            }
-            else
-            {
-                $arTypes[$animalType]++;
-            }
+            $arTypes[$key] = count($type);
         }
 
         return $arTypes;

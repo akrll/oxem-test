@@ -18,4 +18,9 @@ class Cow extends animal
     {
         return $this->ProductType;
     }
+
+    public function getAnimalType()
+    {
+        return parent::getAnimalType();
+    }
 }

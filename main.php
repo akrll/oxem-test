@@ -5,23 +5,21 @@ $days = 7;
 
 $farm = new Farm;
 
-var_dump($farm);
-
 for($i = 0; $i < 10; $i++){
-    $farm->arAnimals[] = new Cow;
+    $farm->registerAnimal(new Cow);
 }
 for($i = 0; $i < 20; $i++){
-    $farm->arAnimals[] = new Chicken;
+    $farm->registerAnimal(new Chicken);
 }
 
-$b = $farm->getCountAnimalsType($farm->arAnimals);
+$b = $farm->getCountAnimalsType();
 echo "На ферме:" . PHP_EOL;
 foreach($b as $type => $count)
 {
     echo $type . " - " . $count . PHP_EOL;
 }
 
-$s = $farm->getAnimalsProduct($farm->arAnimals, $days);
+ $s = $farm->getAnimalsProduct($days);
 echo "За $days дней собрано:" . PHP_EOL;
 foreach($s as $type => $count)
 {
@@ -29,15 +27,15 @@ foreach($s as $type => $count)
 }
 
 for($i = 0; $i < 1; $i++){
-    $farm->arAnimals[] = new Cow;
+    $farm->registerAnimal(new Cow);
 }
 for($i = 0; $i < 5; $i++){
-    $farm->arAnimals[] = new Chicken;
+    $farm->registerAnimal(new Chicken);
 }
 
 echo "Была докуплена одна корова и пять куриц." . PHP_EOL;
 
-$b = $farm->getCountAnimalsType($farm->arAnimals);
+$b = $farm->getCountAnimalsType();
 echo "На ферме:" . PHP_EOL;
 foreach($b as $type => $count)
 {
@@ -45,7 +43,7 @@ foreach($b as $type => $count)
 }
 
 
-$s = $farm->getAnimalsProduct($farm->arAnimals, $days);
+$s = $farm->getAnimalsProduct($days);
 echo "За $days дней собрано:" . PHP_EOL;
 foreach($s as $type => $count)
 {
