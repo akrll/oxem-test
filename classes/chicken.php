@@ -1,5 +1,6 @@
 <?
-class chicken extends animal
+
+class Chicken extends Animal
 {
 
     function __construct() 

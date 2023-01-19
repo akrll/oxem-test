@@ -1,22 +1,7 @@
 <?
-class farm
-{
-    //Метод создания животного
-    public function createAnimal($type = false, &$arArr = [], $count = 1)
-    {
-        if(!$type)
-        {
-            throw new Exception('Не указан тип животного');
-        }
-        else
-        {
-            for($i = 0; $i < $count; $i++){
-                $arArr[] = animal::create($type);
-            }
-            return $arArr;
-        }
-    }
 
+class Farm
+{
     //Метод получения продуктов для всех типов животных
     public function getAnimalsProduct($arAnimals, $cDays = 1)
     {
