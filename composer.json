@@ -1,0 +1,12 @@
+{
+    "name": "kirill/test",
+    "autoload": {
+        "files": [
+            "classes/Animal.php",
+            "classes/Farm.php",
+            "classes/Chicken.php",
+            "classes/Cow.php"
+          ]
+    },
+    "require": {}
+}
