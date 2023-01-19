@@ -5,8 +5,6 @@ $days = 7;
 
 $farm = new Farm;
 
-var_dump($farm);
-
 for($i = 0; $i < 10; $i++){
     $farm->arAnimals[] = new Cow;
 }
