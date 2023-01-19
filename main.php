@@ -2,25 +2,26 @@
 require 'vendor/autoload.php';
 
 $days = 7;
-$animals = [];
+
 $farm = new Farm;
 
+var_dump($farm);
 
 for($i = 0; $i < 10; $i++){
-    $animals[] = new Cow;
+    $farm->arAnimals[] = new Cow;
 }
 for($i = 0; $i < 20; $i++){
-    $animals[] = new Chicken;
+    $farm->arAnimals[] = new Chicken;
 }
 
-$b = $farm->getCountAnimalsType($animals);
+$b = $farm->getCountAnimalsType($farm->arAnimals);
 echo "На ферме:" . PHP_EOL;
 foreach($b as $type => $count)
 {
     echo $type . " - " . $count . PHP_EOL;
 }
 
-$s = $farm->getAnimalsProduct($animals, $days);
+$s = $farm->getAnimalsProduct($farm->arAnimals, $days);
 echo "За $days дней собрано:" . PHP_EOL;
 foreach($s as $type => $count)
 {
@@ -28,15 +29,15 @@ foreach($s as $type => $count)
 }
 
 for($i = 0; $i < 1; $i++){
-    $animals[] = new Cow;
+    $farm->arAnimals[] = new Cow;
 }
 for($i = 0; $i < 5; $i++){
-    $animals[] = new Chicken;
+    $farm->arAnimals[] = new Chicken;
 }
 
 echo "Была докуплена одна корова и пять куриц." . PHP_EOL;
 
-$b = $farm->getCountAnimalsType($animals);
+$b = $farm->getCountAnimalsType($farm->arAnimals);
 echo "На ферме:" . PHP_EOL;
 foreach($b as $type => $count)
 {
@@ -44,7 +45,7 @@ foreach($b as $type => $count)
 }
 
 
-$s = $farm->getAnimalsProduct($animals, $days);
+$s = $farm->getAnimalsProduct($farm->arAnimals, $days);
 echo "За $days дней собрано:" . PHP_EOL;
 foreach($s as $type => $count)
 {

@@ -2,6 +2,8 @@
 
 class Farm
 {
+
+    public $arAnimals = [];
     //Метод получения продуктов для всех типов животных
     public function getAnimalsProduct($arAnimals, $cDays = 1)
     {
